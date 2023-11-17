@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Go Template Demo</title>
+    </head>
+    <body>
+        <h1>Books</h1>
+        <ul>
+            {{range $key, $value := .}}
+            <li>{{$key}} by {{$value}}</li>
+            {{ end }}
+        </ul>
+    </body>
+</html>
