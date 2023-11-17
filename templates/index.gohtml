@@ -7,7 +7,9 @@
     <body>
         <h1>Books</h1>
         <ul>
+            {{range .}}
             <li>{{.Title}} by {{.Author}}</li>
+            {{ end }}
         </ul>
     </body>
 </html>

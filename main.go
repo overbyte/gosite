@@ -19,13 +19,14 @@ func init() {
 }
 
 func main() {
-	bible := book{
-		Title: "The Bible",
-		Author: "God",
+	books := []book {
+		book{ Title: "Harry Potter", Author: "J K Rowling" },
+		book{ Title: "The Bible", Author: "God" },
+		book{ Title: "Neuromancer", Author: "William Gibson"},
 	}
 
 	// execute to stdout
-	err := tpl.ExecuteTemplate(os.Stdout, "index.gohtml", bible)
+	err := tpl.ExecuteTemplate(os.Stdout, "index.gohtml", books)
 	if err != nil {
 		log.Fatalln(err)
 	}
