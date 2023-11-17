@@ -7,9 +7,7 @@
     <body>
         <h1>Books</h1>
         <ul>
-            {{range $key, $value := .}}
-            <li>{{$key}} by {{$value}}</li>
-            {{ end }}
+            <li>{{.Title}} by {{.Author}}</li>
         </ul>
     </body>
 </html>
