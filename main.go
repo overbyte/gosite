@@ -20,9 +20,9 @@ func init() {
 
 func main() {
 	books := []book {
-		book{ Title: "Harry Potter", Author: "J K Rowling" },
-		book{ Title: "The Bible", Author: "God" },
-		book{ Title: "Neuromancer", Author: "William Gibson"},
+		{ Title: "Harry Potter", Author: "J K Rowling" },
+		{ Title: "The Bible", Author: "God" },
+		{ Title: "Neuromancer", Author: "William Gibson"},
 	}
 
 	// execute to stdout
