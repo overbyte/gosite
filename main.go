@@ -16,9 +16,11 @@ type book struct {
 }
 
 // create a FuncMap of functions to pass to the templates
+// NOTE it is common to use very short function names, presumably because they
+// often get pipelined together like {{.MyString | uc | ft}}
 var funcMap = template.FuncMap{
-	"upperCase": strings.ToUpper,
-	"firstThree": firstThree,
+	"uc": strings.ToUpper,
+	"ft": firstThree,
 }
 
 // instiate the templates and pass the funcmap up front
