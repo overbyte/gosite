@@ -1,8 +1,9 @@
 package main
 
-import(
+import (
 	"log"
 	"os"
+	"strings"
 	"text/template"
 )
 
@@ -14,8 +15,20 @@ type book struct {
 	Author	string
 }
 
+// create a FuncMap of functions to pass to the templates
+var funcMap = template.FuncMap{
+	"upperCase": strings.ToUpper,
+	"firstThree": firstThree,
+}
+
 func init() {
-	tpl = template.Must(template.ParseGlob("templates/*.gohtml"))
+	tpl = template.Must(template.New("").Funcs(funcMap).ParseGlob("templates/*.gohtml"))
+}
+
+func firstThree(s string) string {
+	s = strings.TrimSpace(s)
+	s = s[:3]
+	return s
 }
 
 func main() {

@@ -8,7 +8,7 @@
         <h1>Books</h1>
         <ul>
             {{range .}}
-            <li>{{.Title}} by {{.Author}}</li>
+            <li>{{.Title}} by {{firstThree .Author}}</li>
             {{ end }}
         </ul>
     </body>
