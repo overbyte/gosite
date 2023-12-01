@@ -5,6 +5,7 @@ import (
 	"os"
 	"strings"
 	"text/template"
+	"time"
 )
 
 // create template container and load all templates into it
@@ -21,6 +22,7 @@ type book struct {
 var funcMap = template.FuncMap{
 	"uc": strings.ToUpper,
 	"ft": firstThree,
+	"dmy": formatToDMY,
 }
 
 // instiate the templates and pass the funcmap up front
@@ -39,15 +41,28 @@ func firstThree(s string) string {
 	return s
 }
 
+func formatToDMY(t time.Time) string {
+	// Time.Format() is based on "01/02 03:04:05PM '06 -0700"
+	return t.Format("02-01-2006")
+}
+
 func main() {
-	books := []book {
-		{ Title: "Harry Potter", Author: "J K Rowling" },
-		{ Title: "The Bible", Author: "JHVH" },
-		{ Title: "Neuromancer", Author: "William Gibson"},
+	pageData := struct {
+		Books []book
+		Time time.Time
+		Mol	uint
+	} {
+		Books: []book{
+			{ Title: "Harry Potter", Author: "J K Rowling" },
+			{ Title: "The Bible", Author: "JHVH" },
+			{ Title: "Neuromancer", Author: "William Gibson"},
+		},
+		Time: time.Now(),
+		Mol: 42,
 	}
 
 	// execute to stdout
-	err := tpl.ExecuteTemplate(os.Stdout, "index.gohtml", books)
+	err := tpl.ExecuteTemplate(os.Stdout, "index.gohtml", pageData)
 	if err != nil {
 		log.Fatalln(err)
 	}
