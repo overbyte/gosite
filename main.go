@@ -21,7 +21,7 @@ func init() {
 func main() {
 	books := []book {
 		{ Title: "Harry Potter", Author: "J K Rowling" },
-		{ Title: "The Bible", Author: "God" },
+		{ Title: "The Bible", Author: "JHVH" },
 		{ Title: "Neuromancer", Author: "William Gibson"},
 	}
 
