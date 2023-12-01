@@ -16,6 +16,10 @@ type book struct {
 	Author	string
 }
 
+func (b book) Summarize() string {
+	return b.Title + ", " + b.Author
+}
+
 // create a FuncMap of functions to pass to the templates
 // NOTE it is common to use very short function names, presumably because they
 // often get pipelined together like {{.MyString | uc | ft}}
