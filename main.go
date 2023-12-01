@@ -21,6 +21,12 @@ var funcMap = template.FuncMap{
 	"firstThree": firstThree,
 }
 
+// instiate the templates and pass the funcmap up front
+// NOTE passing the funcMap after like tpl.Funcs(funcMap) means that the
+// template will be instantiated and be looking for any funcs used before they
+// are passed so will not work
+// this * creates a new template, * adds the func map to the result template
+// * runs ParseGlob() on result template
 func init() {
 	tpl = template.Must(template.New("").Funcs(funcMap).ParseGlob("templates/*.gohtml"))
 }
